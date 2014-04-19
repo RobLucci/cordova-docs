@@ -1,0 +1,43 @@
+<?php 
+
+header('Content-Type:application/json');
+
+$uploaded = [];
+$allowed = ["gif","png","jpeg","jpg"];
+
+$succedeed = [];
+$failed = [];
+
+if(!empty($_FILES['file'])){
+	foreach ($_FILES['file']['name'] as $key => $name) {
+		if($_FILES['file']['error'][$key] === 0 && $_FILES['file']['size'][$key] < 3145728){ // 3 MB in byte
+			
+			$temp = $_FILES['file']['tmp_name'][$key];
+			$ext = explode(('.'), $name);
+			$ext = strtolower(end($ext));			
+			$file = md5_file($temp) . time() . ".".$ext;
+			
+			if(in_array($ext, $allowed) === true && move_uploaded_file($temp, "uploads/{$file}") === true){
+				$succedeed[] = array(
+					'name' => $name,
+					'file' => $file
+				);
+			}
+			else{
+				$failed[] = array(
+					'name' => $name
+				);
+			}
+		}
+		else{  // il file contiene errori o la dimensione supera il limite massimo
+			$failed[] = array(
+				'name' => $name
+			);
+		}
+	}
+
+	echo json_encode(array(
+		'succedeed' => $succedeed,
+		'failed' => $failed
+	));
+}
