@@ -14,7 +14,7 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Upload Files</h1>
+	<h1>Upload File</h1>
 	<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Carica una immagine</button>
 
 	<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -24,7 +24,7 @@
 				<!-- modal content -->
 				<form action="upload.php" method="post" enctype="multipart/form-data" id="upload" class="upload">
 					<fieldset>
-						<legend>Upload files</legend>
+						<legend>Upload file</legend>
 						<input type="file" id="file" name="file[]" required >
 						<input type="submit" id="submit" name="submit" value="Upload">
 					</fieldset>	
