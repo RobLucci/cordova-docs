@@ -14,7 +14,7 @@
 	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Upload File</h1>
+	<h1>Upload Files</h1>
 	<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Carica una immagine</button>
 
 	<div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
